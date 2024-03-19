@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Telegram Market App - Simple API</title>
+</head>
+<body>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    body {
+        color: #1d1717;
+        width: 75%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 40px 0;
+    }
+    h1 {
+        text-align: center;
+        font-size: 36px;
+    }
+    h2 {
+        font-size: 24px;
+        width: 50%;
+        padding-bottom: 10px;
+        border-bottom: 1px solid gray;
+    }
+    ul {
+        margin-top: 10px;
+    }
+    li {
+        list-style: none;
+        font-size: 18px;
+    }
+    li::before {
+        content: '->';
+        padding-right: 15px;
+    }
+    a {
+        text-decoration: none;
+        color: #1d1717;
+        transition: .4s;
+    }
+    a:hover {
+        color: gray;
+    }
+    .api-block {
+        margin-top: 50px;
+        border: 1px solid lightgray;
+        border-left: 5px solid orangered;
+        padding: 10px 20px;
+        box-shadow: 3px 3px rgba(0, 0, 0, 0.1);
+    }
+    .code {
+        background-color: rgba(237, 231, 225, 0.2);
+        border: 1px rgba(237, 231, 225, 1) solid;
+        width: max-content;
+        max-width: 95%;
+        padding: 15px;
+        margin: 15px 0;
+    }
+    .code p {
+        padding-left: 20px;
+    }
+    h3 {
+        margin-top: 15px;
+        font-size: 16px;
+    }
+    @media (max-width: 500px) {
+        body {
+            width: 100%;
+            padding: 10px;
+        }
+        .api-block {
+            width: 100%;
+        }
+    }
+</style>
+
+  <h1>Welcome to Telegram Market API. Use next routes to get needed data from PostgreSQL:</h1>
+  <div class='api-block'>
+    <h2>User routes:</h2>
+    <ul>
+      <li><a href='/api/users'>/api/users</a> - get all users</li>
+      <li><a href='/api/users/1'>/api/users/:id</a> - add any id to get a specific user</li>
+      <h3>Response example:</h3>
+      <div class='code'>
+        {
+        <p>
+          "id":35, <br>
+          "login":"useruser", <br>
+          "password":"$2b$10$JbFI2auSmdguxjY1h5GIACELt3BdaEgrAE7DKSAqxMc9i2tVqtUHO", <br>
+          "fullname":"Boris" <br>
+        </p>
+        }
+      </div>
+      <li><a href='/api/auth'>/api/auth</a> - post request for auth</li>
+      <h3>Request example:</h3>
+      <div class='code'>
+        {
+        <p>
+          "login":"useruser", <br>
+          "password":"qwerty", <br>
+        </p>
+        }
+      </div>
+      <li><a href='/api/user'>/api/user</a> - put request for update user data</li>
+      <h3>Request example:</h3>
+      <div class='code'>
+        {
+        <p>
+          "id":1, <br>
+          "login":"useruser", <br>
+          "password":"qwerty123123", <br>
+          "fullname":"Boris" <br>
+        </p>
+        }
+      </div>
+      <li><a href='/api/user'>/api/user/:id</a> - delete request for deleting user from database</li>
+      <h3>Request example:</h3>
+      <div class='code'>
+        {
+        <p>
+          "id":"1", <br>
+        </p>
+        }
+      </div>
+    </ul>
+  </div>
+
+  <div class='api-block'>
+    <h2>Reviews routes:</h2>
+    <ul>
+      <li><a href='/api/reviews'>/api/reviews</a> - get all reviews</li>
+      <li><a href='/api/reviews'>/api/reviews</a> - add new review</li>
+      <li><a href='/api/reviews/1'>/api/reviews/:id</a> - delete request. Add any id which exist in reviews table</li>
+    </ul>
+  </div>
+
+  <div class='api-block'>
+    <h2>Product cards routes:</h2>
+    <ul>
+      <li><a href='/api/cards'>/api/cards</a> - get all cards</li>
+      <li><a href='/api/reviews'>/api/cards/:id</a> - add new review</li>
+      <li><a href='/api/reviews/1'>/api/cards/:id</a> - delete request. Add any id which exist in reviews table</li>
+      <li><a href='/api/reviews/1'>/api/cards/:id</a> - delete request. Add any id which exist in reviews table</li>
+    </ul>
+  </div>
+
+</body>
+</html>
